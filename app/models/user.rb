@@ -12,4 +12,6 @@ class User < ApplicationRecord
   validates :birthday, presence: true
        
   has_many :items
+
+  validates :nickname, presence: true, length: { maximum: 6 }
 end
