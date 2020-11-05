@@ -13,5 +13,5 @@ class User < ApplicationRecord
        
   has_many :items
 
-  validates :nickname, presence: true, length: { maximum: 6 }
+  # validates :nickname, presence: true, length: { maximum: 6 }
 end
