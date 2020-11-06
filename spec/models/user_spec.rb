@@ -9,15 +9,7 @@ describe User do
       it "nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる" do
         expect(@user).to be_valid
       end
-      it "nicknameが6文字以下で登録できる" do
-        @user.nickname = "aaaaaa"
-        expect(@user).to be_valid
-      end
-      it "passwordが6文字以上であれば登録できる" do
-        @user.password = "000aaa"
-        @user.password_confirmation = "000aaa"
-        expect(@user).to be_valid
-      end
+      
     end
 
     context '新規登録がうまくいかないとき' do
@@ -99,6 +91,26 @@ describe User do
         @user.email = "aaa1111"
         @user.valid?
         expect(@user.errors.full_messages).to include("Email is invalid")
+      end
+      it "last_nameが半角の場合、登録できない" do
+        @user.last_name = "aaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
+      end
+      it "first_nameが半角の場合、登録できない" do
+        @user.first_name = "aaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
+      end
+      it "last_name_kanaが半角の場合、登録できない" do
+        @user.last_name_kana = "aaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      end
+      it "last_name_kanaがが半角の場合、登録できない" do
+        @user.first_name_kana = "aaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
       end
     end
   end
