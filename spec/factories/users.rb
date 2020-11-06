@@ -9,6 +9,6 @@ FactoryBot.define do
 		birthday { Faker::Date.birthday(min_age: 5, max_age: 90)}
 
 		password              { Faker::Internet.password(min_length: 6)+"1a" }
-    password_confirmation {password} #{"Hello" + "world"} => Hello world
+    password_confirmation {password} 
   end
 end

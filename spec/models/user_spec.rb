@@ -84,6 +84,22 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
       end
+      it 'password:半角英数混合(半角数字のみ)' do
+        @user.password = '1111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+      end
+      it "passwordとpassword_confirmationが不一致では登録できないこと" do
+        @user.password = "123456"
+        @user.password_confirmation = "1234567"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+      it "emailに＠がない場合登録できない" do
+        @user.email = "aaa1111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
     end
   end
 end
