@@ -9,7 +9,7 @@ application up and running.
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
 | email              | string              | null: false             |
-| password           | string              | null: false             |
+| encrypted_password | string              | null: false             |
 | nickname           | string              | null: false             |
 | first_name         | string              | null: false             |
 | last_name          | string              | null: false             |
@@ -29,7 +29,7 @@ application up and running.
 | user                                | references | foreign_key: true |
 | item_name                           | string     | null: false       |
 | explanation                         | string     | null: false       |
-| category                            | string     | null: false       |
+| category_id                         | integer    | null: false       |
 | condition_id                        | integer    | null: false       |
 | delivery_fee_id                     | integer    | null: false       |
 | ship_from_location_id               | integer    | null: false       |
@@ -40,11 +40,10 @@ application up and running.
 
 * belongs_to :user
 
-## deliver address table
+## deliver_addresses table
+
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| user                                | references | foreign_key: true |
-| item                                | references | foreign_key: true |
 | postal code                         | string     | null: false       |
 | prefecture_id                       | integer    | null: false       |
 | city                                | string     | null: false       |
@@ -55,6 +54,7 @@ application up and running.
 ### Association
 
 * belongs_to :user
+* has_one : order
 
 ## orders table
 | Column                              | Type       | Options           |
