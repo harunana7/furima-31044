@@ -28,7 +28,7 @@ application up and running.
 |-------------------------------------|------------|-------------------|
 | user                                | references | foreign_key: true |
 | item_name                           | string     | null: false       |
-| explanation                         | string     | null: false       |
+| explanation                         | text       | null: false       |
 | category_id                         | integer    | null: false       |
 | condition_id                        | integer    | null: false       |
 | delivery_fee_id                     | integer    | null: false       |
@@ -53,8 +53,6 @@ application up and running.
 
 ### Association
 
-* belongs_to :user
-* has_one : order
 
 ## orders table
 | Column                              | Type       | Options           |
