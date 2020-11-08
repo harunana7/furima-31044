@@ -55,7 +55,7 @@ application up and running.
 
 ### Association
 
-* belongs_to order
+* belongs_to : order
 
 ## orders table
 | Column                              | Type       | Options           |
