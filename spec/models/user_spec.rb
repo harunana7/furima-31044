@@ -62,26 +62,26 @@ describe User do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "passwordが5文字以下であれば登録できない" do
-        @user.password = "ab1"
+        @user.password = "ab1ab"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password can't be blank")
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
       it "passwordが存在してもpassword_confirmationが空では登録できない" do
         @user.password_confirmation = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it 'password:半角英数混合(半角英語のみ)' do
+      it 'passwordが半角英数混合(半角英語のみ)だと登録できない' do
         @user.password = 'aaaaaaa'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
       end
-      it 'password:半角英数混合(半角数字のみ)' do
+      it 'password:半角英数混合(半角数字のみ)だと登録できない' do
         @user.password = '1111111'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
       end
-      it "passwordとpassword_confirmationが不一致では登録できないこと" do
+      it "passwordとpassword_confirmationが不一致では登録できない" do
         @user.password = "123456"
         @user.password_confirmation = "1234567"
         @user.valid?
