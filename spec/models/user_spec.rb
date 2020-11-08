@@ -62,7 +62,7 @@ describe User do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it "passwordが5文字以下であれば登録できない" do
-        @user.password = ""
+        @user.password = "ab1"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
