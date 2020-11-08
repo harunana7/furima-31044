@@ -20,14 +20,14 @@ application up and running.
 ### Association
 
 * has_many :items
-* has_one : deliver address
+* has_many :orders
 
 ## items table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
 | user                                | references | foreign_key: true |
-| item_name                           | string     | null: false       |
+| name                                | string     | null: false       |
 | explanation                         | text       | null: false       |
 | category_id                         | integer    | null: false       |
 | condition_id                        | integer    | null: false       |
@@ -39,11 +39,13 @@ application up and running.
 ### Association
 
 * belongs_to :user
+* has_one :orders
 
 ## deliver_addresses table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
+| order                               | references | foreign_key: true |
 | postal code                         | string     | null: false       |
 | prefecture_id                       | integer    | null: false       |
 | city                                | string     | null: false       |
@@ -64,6 +66,7 @@ application up and running.
 
 * belongs_to : user
 * belongs_to : item
+* has_one :deliver_addresses
 
 
 Things you may want to cover:
