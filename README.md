@@ -39,7 +39,7 @@ application up and running.
 ### Association
 
 * belongs_to :user
-* has_one :orders
+* has_one :order
 
 ## deliver_addresses table
 
@@ -55,6 +55,7 @@ application up and running.
 
 ### Association
 
+* belongs_to order
 
 ## orders table
 | Column                              | Type       | Options           |
@@ -66,7 +67,7 @@ application up and running.
 
 * belongs_to : user
 * belongs_to : item
-* has_one :deliver_addresses
+* has_one :deliver_address
 
 
 Things you may want to cover:
