@@ -1,5 +1,8 @@
 require 'rails_helper'
 describe User do
+  association :user
+  association :order
+
   before do
     @user = FactoryBot.build(:user)
   end
