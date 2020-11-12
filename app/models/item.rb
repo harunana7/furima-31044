@@ -16,4 +16,6 @@ class Item < ApplicationRecord
 	#ジャンルの選択が「--」の時は保存できないようにする
 	validates :category_id, :condition_id, :delivery_fee_id, :ship_from_location_id, :delivery_period_id, numericality: { other_than: 1 } 
 
+  #¥300~¥9999999までの金額であれば出品できるようにする
+	validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 end

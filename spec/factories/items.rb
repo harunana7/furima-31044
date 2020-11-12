@@ -8,7 +8,7 @@ FactoryBot.define do
 
     name {Faker::Name.name}
     explanation {"aaa"}
-    price {111}
+    price {333}
     category_id {2}
     condition_id {2}
     delivery_fee_id {2}

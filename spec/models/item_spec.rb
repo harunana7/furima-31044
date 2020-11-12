@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
     before do
+      
      @item = FactoryBot.build(:item)
     end
 
@@ -53,6 +54,16 @@ RSpec.describe Item, type: :model do
       @item.delivery_period_id = "1"
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery period must be other than 1")
+    end
+    it "priceが300以下では登録できない" do
+      @item.price = "299"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+    end
+    it "priceが9999999以上では登録できない" do
+      @item.price = "10000000"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
     end
   end
 end
