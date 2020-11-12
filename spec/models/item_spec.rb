@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
     before do
-      
+
      @item = FactoryBot.build(:item)
     end
 
     describe '商品出品機能' do
      context '出品がうまくいくとき' do
-        it "nameとexplanation、price、category_id、condition_id、delivery_fee_id、ship_from_location_id、delivery_period_idが存在すれば出品できる" do
+        it "nameとexplanation、image、price、category_id、condition_id、delivery_fee_id、ship_from_location_id、delivery_period_idが存在すれば出品できる" do
         expect(@item).to be_valid
       end
     end 
@@ -24,6 +24,11 @@ RSpec.describe Item, type: :model do
       @item.explanation = " "
       @item.valid?
       expect(@item.errors.full_messages).to include("Explanation can't be blank")
+    end
+    it "imageが空だと登録できない" do
+      @item.image = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Image can't be blank")
     end
     it "priceが空では登録できない" do
       @item.price = ""
