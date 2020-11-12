@@ -9,7 +9,6 @@ describe User do
       it "nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる" do
         expect(@user).to be_valid
       end
-      
     end
 
     context '新規登録がうまくいかないとき' do

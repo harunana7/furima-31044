@@ -24,5 +24,6 @@ with_options presence: true, format: { with:/\A[ァ-ヶー－]+\z/} do
   end 
 
   has_many :items
+  has_many :orders
   
 end
