@@ -1,29 +1,27 @@
 class ItemsController < ApplicationController
-	before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new]
 
+  def index
+    @items = Item.all.order('created_at DESC')
+  end
 
-	def index
-		@items = Item.all.order('created_at DESC')
-	end
-
-	def new
+  def new
     @item = Item.new
-	end
+  end
 
-	def create
-		@item = Item.new(item_params)
-		if @item.save
 			redirect_to root_path
-		else
-			render :new
-		end
-	end
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+        redirect_to root_path
+    else
+        render :new
+    end
+  end
 		
-	def show
-		@item = Item.find(params[:id])
-	end
-	
-
+  def show
+    @item = Item.find(params[:id])
+  end
 	
   private
   def item_params
