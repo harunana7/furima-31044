@@ -70,6 +70,12 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include
     end
+
+    it 'telephoneにハイフンは不要であること' do
+      @order_address.telephone = "090-123-456"
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include()
+    end
   end
 end
 end
