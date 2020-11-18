@@ -13,15 +13,15 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-        redirect_to root_path
+      redirect_to root_path
     else
-        render :new
+      render :new
     end
   end
-		
+
   def show
-	end
-	
+  end
+
   def edit
     redirect_to root_path if current_user.id != @item.user_id
   end
@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
-	end
+  end
 
   def destroy
     if current_user.id == @item.user_id
@@ -42,8 +42,9 @@ class ItemsController < ApplicationController
       render :show
     end
   end
-	
+
   private
+
   def item_params
     params.require(:item).permit(:name, :content, :image, :explanation, :category_id, :condition_id, :delivery_fee_id, :ship_from_location_id, :delivery_period_id, :price).merge(user_id: current_user.id)
   end
@@ -51,5 +52,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
 end
