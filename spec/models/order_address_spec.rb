@@ -12,7 +12,7 @@ RSpec.describe OrderAddress, type: :model do
 
   context '商品購入ができる時' do
     it '建物名が空でも購入できること' do
-      @order_address.building_name = ''
+      @order_address.building_name = nil
       expect(@order_address).to be_valid
     end
   end
