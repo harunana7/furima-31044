@@ -7,10 +7,6 @@ class OrdersController < ApplicationController
       @order = OrderAddress.new
   end
 
-  # def index
-  #     redirect_to root_path if @order = OrderAddress.new
-  # end
-
   def create
     @order = OrderAddress.new(order_params)
     if @order.valid?
