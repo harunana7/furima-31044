@@ -19,11 +19,11 @@ RSpec.describe OrderAddress, type: :model do
     it 'post_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @order_address.post_code = '1234567'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+      expect(@order_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
     end
 
     it '都道府県が空だと保存できないこと' do
-      @order_address.prefecture_id = "1"
+      @order_address.prefecture_id = '1'
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
     end
@@ -52,9 +52,9 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     it 'telephoneが11桁以上だと保存できないこと' do
-      @order_address.telephone = "123412341234"
+      @order_address.telephone = '123412341234'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include()
+      expect(@order_address.errors.full_messages).to include
     end
   end
 end
