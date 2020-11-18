@@ -3,7 +3,6 @@ const pay = () => {
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
 		e.preventDefault();
-		//console.log("aaaaaa")
 		
 		const formResult = document.getElementById("charge-form");
 		const formData = new FormData(formResult);
@@ -15,7 +14,6 @@ const pay = () => {
 		};
 		
 		Payjp.createToken(card, (status, response) => {
-			//console.log(response.error)
       if (status == 200) {
         const token = response.id;
 				const renderDom = document.getElementById("charge-form");

@@ -4,12 +4,12 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
-    if current_user.id == @item.user_id
-      return redirect_to root_path
-    else
       @order = OrderAddress.new
-    end
   end
+
+  # def index
+  #     redirect_to root_path if @order = OrderAddress.new
+  # end
 
   def create
     @order = OrderAddress.new(order_params)

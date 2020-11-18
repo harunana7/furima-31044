@@ -7,10 +7,10 @@ class OrderAddress
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
     validates :token
     # 「住所」の都道府県に関するバリデーション
-    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :prefecture_id
     validates :city
     validates :house_number
-    validates :telephone
+    validates :telephone, format: { with: /\A[0-9]{,11}\z/, message: 'is too long (maximum is 11 characters)' }
   end
 
   def save
